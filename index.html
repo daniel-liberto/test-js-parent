@@ -6,8 +6,10 @@
 </head>
 
 <body>
-    <button id="openFlutterModal">Modal Android</button>
-    <button id="openReactModal">Modal iOS</button>
+    <div class="container">
+        <button class="btn btn-android" id="openFlutterModal">Open Modal Android</button>
+        <button class="btn btn-ios" id="openReactModal">Open Modal iOS</button>
+    </div>
     <script>
         document.getElementById('openFlutterModal').addEventListener('click', function () {
             WebViewModal.postMessage(JSON.stringify({
@@ -20,6 +22,28 @@
             }));
         });
     </script>
+    <style>
+        .container {
+            width: 100px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            box-shadow: 1px 1px 4px black;
+            border-radius: 10px;
+        }
+
+        .btn-android {
+            background-color: lightcoral;
+        }
+
+        .btn-ios {
+            background-color: lightskyblue;
+        }
+    </style>
 </body>
 
 </html>
