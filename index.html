@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>XAMPP Project</title>
 </head>
+
 <body>
-    <button id="openFlutterModal">Open Modal</button>
+    <button id="openFlutterModal">Modal Android</button>
+    <button id="openReactModal">Modal iOS</button>
     <script>
-        document.getElementById('openFlutterModal').addEventListener('click', function() {
+        document.getElementById('openFlutterModal').addEventListener('click', function () {
             WebViewModal.postMessage(JSON.stringify({
-                modal: 'true', phrase: 'test', language: 'english', theme: 'dark'}));
+                modal: 'true', phrase: 'test', language: 'english', theme: 'dark'
+            }));
+        });
+        document.getElementById('openReactModal').addEventListener('click', function () {
+            window.ReactNativeWebView.postMessage(JSON.stringify({
+                modal: 'true', phrase: 'test', language: 'english', theme: 'dark'
+            }));
         });
     </script>
 </body>
+
 </html>
