@@ -1,0 +1,75 @@
+body {
+  overflow-x: hidden;
+}
+
+.container-index {
+  width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.container-index h1 {
+  font-size: 60px;
+  text-decoration: underline chocolate;
+}
+
+.next-page h1 {
+  text-decoration: underline aqua;
+}
+
+.index-page h1 {
+  text-decoration: underline chocolate;
+}
+
+.container {
+  width: 600px;
+  margin: 40px auto 0 auto;
+  padding: 20px 0;
+  background-color: rgba(20, 20, 20, 0.2);
+  border-radius: 4px;
+  box-shadow: 1px 1px 6px rgba(20, 20, 20, 0.6);
+}
+
+.container h1 {
+  font-size: 40px;
+}
+
+.btn-grid {
+  text-align: center;
+}
+
+.btn-list {
+  display: flex;
+  justify-content: space-between;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.btn-list button {
+  font-size: 20px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 15px 30px;
+  margin: 20px 0;
+  max-width: 150px;
+  border: 1px solid rgba(20, 20, 20, 0.4);
+  border-radius: 10px;
+}
+
+.btn-android {
+  background-color: lightgreen;
+}
+
+.btn-ios {
+  background-color: white;
+}
+
+.btn-refresh {
+  background-color: lightskyblue;
+}
+
+.btn-next {
+  background-color: lightyellow;
+}

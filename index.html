@@ -3,18 +3,37 @@
 
 <head>
     <title>XAMPP Project</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
+    <div class="container-index index-page">
+        <h1>Index page</h1>
+    </div>
+
     <div class="container">
-        <button class="btn btn-android" id="openFlutterModal">Open Modal Android</button>
-        <button class="btn btn-ios" id="openReactModal">Open Modal iOS</button>
+        <div class="btn-grid">
+            <h1>Modal test</h1>
+            <div class="btn-list">
+                <button class="btn btn-android" id="openFlutterModal">Open Flutter Android</button>
+                <button class="btn btn-ios" id="openReactModal">Open React iOS</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="btn-grid">
+            <h1>Webview test</h1>
+            <div class="btn-list">
+                <button onclick="refreshPage()" class="btn btn-refresh" id="refreshPage">Refresh page</button>
+                <a href="next.html"><button class="btn btn-next" id="nextPage">Next page</button></a>
+            </div>
+        </div>
     </div>
     <script>
-        if (!navigator.onLine) {
-            // The user is offline
-            document.body.innerHTML = "<h1>Oops! It looks like you are offline.</h1>";
+        function refreshPage() {
+            location.reload();
         }
+
         document.getElementById('openFlutterModal').addEventListener('click', function () {
             WebViewModal.postMessage(JSON.stringify({
                 modal: 'true', phrase: 'test', language: 'english', theme: 'dark'
@@ -26,28 +45,6 @@
             }));
         });
     </script>
-    <style>
-        .container {
-            width: 100px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            padding: 10px;
-            margin: 20px 0;
-            border: none;
-            box-shadow: 1px 1px 4px black;
-            border-radius: 10px;
-        }
-
-        .btn-android {
-            background-color: lightcoral;
-        }
-
-        .btn-ios {
-            background-color: lightskyblue;
-        }
-    </style>
 </body>
 
 </html>
