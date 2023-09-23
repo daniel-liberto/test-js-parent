@@ -73,3 +73,12 @@ body {
 .btn-next {
   background-color: lightyellow;
 }
+
+.btn-google {
+  background-color: white;
+}
+
+.btn-youtube {
+  background-color: red;
+  color: white;
+}
