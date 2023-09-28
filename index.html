@@ -45,7 +45,13 @@
 
         document.getElementById('openFlutterModal').addEventListener('click', function () {
             WebViewModal.postMessage(JSON.stringify({
-                modal: 'true', phrase: 'test', language: 'english', theme: 'dark'
+                modal: 'true',
+                phrase: 'test',
+                language: 'russian',
+                learn: 'english',
+                theme: 'dark',
+                micMsg: 'нажмите, чтобы поговорить',
+                colorTheme: 'orange'
             }));
         });
         document.getElementById('openReactModal').addEventListener('click', function () {
@@ -53,6 +59,26 @@
                 modal: 'true', phrase: 'test', language: 'english', theme: 'dark'
             }));
         });
+
+        async function disableButton() {
+            // Disable the button
+            var button = document.getElementById("refreshButton");
+            button.disabled = true;
+            await document.getElementById('refreshButton').addEventListener('click', function () {
+                CheckStatusInput.postMessage(JSON.stringify({
+                    checkStatus: 'true'
+                }));
+            });
+            await CheckStatusOutput();
+        }
+
+        async function CheckStatusOutput(data) {
+            if (await data != null) {
+                console.log('Received data from Flutter:', data);
+            } else {
+                console.log('Nothing is being receveid.');
+            }
+        }
     </script>
 </body>
 
