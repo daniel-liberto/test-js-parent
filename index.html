@@ -2,81 +2,92 @@
 <html>
 
 <head>
-    <title>XAMPP Project</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <title>XAMPP Project</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <div class="container-index index-page">
-        <h1>Index page</h1>
-    </div>
+  <div class="container-index index-page">
+    <h1>Index page</h1>
+  </div>
 
-    <div class="container">
-        <div class="btn-grid">
-            <h1>Modal test</h1>
-            <div class="btn-list">
-                <button class="btn btn-android" id="openFlutterModal">Open Flutter Android</button>
-                <button class="btn btn-ios" id="openReactModal">Open React iOS</button>
-            </div>
-        </div>
+  <div class="container">
+    <div class="btn-grid">
+      <h1>Modal test</h1>
+      <div class="btn-list">
+        <button class="btn btn-android" id="openFlutterModal">Open Flutter Android</button>
+        <button class="btn btn-ios" id="openNewFlutterModal">Open New Flutter</button>
+      </div>
     </div>
-    <div class="container">
-        <div class="btn-grid">
-            <h1>Webview test</h1>
-            <div class="btn-list">
-                <button onclick="refreshPage()" class="btn btn-refresh" id="refreshPage">Refresh page</button>
-                <a href="next.html"><button class="btn btn-next" id="nextPage">Next page</button></a>
-            </div>
-        </div>
+  </div>
+  <div class="container">
+    <div class="btn-grid">
+      <h1>Webview test</h1>
+      <div class="btn-list">
+        <button onclick="refreshPage()" class="btn btn-refresh" id="refreshPage">Refresh page</button>
+        <a href="next.html"><button class="btn btn-next" id="nextPage">Next page</button></a>
+      </div>
     </div>
-    <div class="container">
-        <div class="btn-grid">
-            <h1>Url test</h1>
-            <div class="btn-list">
-                <a href="https://www.google.com/"><button class="btn btn-google" id="refreshPage">Google </button></a>
-                <a href="https://www.youtube.com/"><button class="btn btn-youtube" id="nextPage">Youtube </button></a>
-            </div>
-        </div>
+  </div>
+  <div class="container">
+    <div class="btn-grid">
+      <h1>Url test</h1>
+      <div class="btn-list">
+        <a href="https://www.google.com/"><button class="btn btn-google" id="refreshPage">Google </button></a>
+        <a href="https://www.youtube.com/"><button class="btn btn-youtube" id="nextPage">Youtube </button></a>
+      </div>
     </div>
-    <script>
-        function refreshPage() {
-            location.reload();
-        }
+  </div>
+  <script>
+    function refreshPage() {
+      location.reload();
+    }
 
-        document.getElementById('openFlutterModal').addEventListener('click', function () {
-            WebViewModal.postMessage(JSON.stringify({
-                modal: 'true',
-                phrase: 'test',
-                language: 'english',
-                theme: 'dark',
-            }));
-        });
-        document.getElementById('openReactModal').addEventListener('click', function () {
-            window.ReactNativeWebView.postMessage(JSON.stringify({
-                modal: 'true', phrase: 'test', language: 'english', theme: 'dark'
-            }));
-        });
+    document.getElementById('openFlutterModal').addEventListener('click', function () {
+      WebViewModal.postMessage(JSON.stringify({
+        modal: 'true',
+        phrase: 'test',
+        language: 'english',
+        theme: 'dark',
+      }));
+    });
+    document.getElementById('openNewFlutterModal').addEventListener('click', function () {
+      WebViewModal.postMessage(JSON.stringify({
+        modal: 'true',
+        phrase: 'test',
+        language: 'russian',
+        learn: 'english',
+        theme: 'dark',
+        micMsg: 'удерживайте, чтобы говорить',
+        colorTheme: '#e38526'
+      }));
+    });
+    document.getElementById('openReactModal').addEventListener('click', function () {
+      window.ReactNativeWebView.postMessage(JSON.stringify({
+        modal: 'true', phrase: 'test', language: 'english', theme: 'dark'
+      }));
+    });
 
-        async function disableButton() {
-            // Disable the button
-            var button = document.getElementById("refreshButton");
-            button.disabled = true;
-            await document.getElementById('refreshButton').addEventListener('click', function () {
-                CheckStatusInput.postMessage(JSON.stringify({
-                    checkStatus: 'true'
-                }));
-            });
-            await CheckStatusOutput();
-        }
+    async function disableButton() {
+      // Disable the button
+      var button = document.getElementById("refreshButton");
+      button.disabled = true;
+      await document.getElementById('refreshButton').addEventListener('click', function () {
+        CheckStatusInput.postMessage(JSON.stringify({
+          checkStatus: 'true'
+        }));
+      });
+      await CheckStatusOutput();
+    }
 
-        async function CheckStatusOutput(data) {
-            if (await data != null) {
-                console.log('Received data from Flutter:', data);
-            } else {
-                console.log('Nothing is being receveid.');
-            }
-        }
-    </script>
+    async function CheckStatusOutput(data) {
+      if (await data != null) {
+        console.log('Received data from Flutter:', data);
+      } else {
+        console.log('Nothing is being receveid.');
+      }
+    }
+  </script>
 </body>
 
 </html>
